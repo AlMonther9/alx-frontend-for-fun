@@ -1,0 +1,15 @@
+// Define variables fpr the colors
+$main-text-color: #3D3D3D;
+$main-bg-color: #6D6D6D;
+// Apply the text color to body and p tags
+body {
+    color: $main-text-color;
+    background-color: $main-bg-color;
+}
+p {
+    color: $main-text-color;
+}
+// Apply the background color to h2 tags
+h2 {
+    background-color: $main-bg-color;
+}

@@ -1,0 +1,36 @@
+// Import the list
+@import '103-sort_list.scss';
+// Custom function to get the Unicode value of a string (for comparison)
+@function string-to-unicode($string) {
+    $unicode: ();
+    @for $i from 1 through str-length($string) {
+        $unicode: append($unicode, str-slice($string, $i, $i));
+    }
+    @return $unicode;
+}
+
+// Custom function to sort the list alphabetically
+@function sort-list($list) {
+    $list-length: length($list);
+
+    @for $i from 1 through $list-length - 1 {
+        @for $j from 1 through $list-length - $i {
+            $current-item: nth($list, $j);
+            $next-item: nth($list, $j + 1);
+
+            @if string-to-unicode($current-item) > string-to-unicode($next-item) {
+                // Swap the items if they are out of order
+                $list: set-nth($list, $j, $next-item);
+                $list: set-nth($list, $j + 1, $current-item);
+            }
+        }
+    }
+
+    @return $list;
+}
+
+// Usage
+$list_sorted: sort-list($list_to_sort);
+
+// Print the sorted list in the debug output
+@debug $list_sorted;
